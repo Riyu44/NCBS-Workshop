@@ -255,15 +255,18 @@ p2 <- SpatialDimPlot(spatial_data, label = TRUE, label.size = 3, cols = ccolss)
 p1 + p2
 ```
 - **Sample Output**
+![Plot image](utils/p1.png)
 
 9. **Dot Plot Visualizations**
 ```r
 DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6","DNAAF1","MUC4","RARRES2","SCGB1A1","SFTPA2","SFTPB","SFTPC"), dot.scale = 4) #ACC_markers_fromGSEA
 ```
 - **Sample Output**
+![Plot image](utils/p2.png)
 
 10. **Dot Plot - 2**
 ```r
 DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6","DNAAF1","MUC4","RARRES2","SCGB1A1","SFTPA2","SFTPB","SFTPC"), dot.scale = 4) #ACC_markers_fromGSEA
 ```
 - **Sample Output**
+![Plot image](utils/p3.png)
