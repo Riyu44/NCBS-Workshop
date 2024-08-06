@@ -108,6 +108,7 @@ spatial_data <- RunPCA(spatial_data, features = VariableFeatures(object = spatia
 
 
 ### 6. **Cluster and Filter**
+#### Clustering
 ```r
 # Check number of PC components (we selected 10 PCs for downstream analysis, based on Elbow plot)
 #ElbowPlot(spatial_data)
@@ -117,11 +118,17 @@ spatial_data <- RunPCA(spatial_data, features = VariableFeatures(object = spatia
 spatial_data <- FindNeighbors(spatial_data, dims = 1:30)
 spatial_data <- FindClusters(spatial_data, resolution = 0.8)
 spatial_data <- RunUMAP(spatial_data, dims = 1:30)
+```
+- **Understanding code** - These lines construct a shared nearest neighbor graph (FindNeighbors) using the top 30 PCs and identify clusters within the data (FindClusters) with a resolution parameter set to 0.8. This step groups cells into clusters based on their gene expression profiles, enabling the identification of distinct cell populations.
 
+```r
 clusters_plot<-DimPlot(spatial_data, reduction = "umap")
 cluster_of_interest <- c(1,2)
 selected_markers <- FindMarkers(spatial_data, ident.1 = cluster_of_interest[1], ident.2 = cluster_of_interest[2], only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
-
+```
+- **Understanding code** - UMAP (Uniform Manifold Approximation and Projection) is used to reduce the dimensionality of the data and visualize clusters in a 2D space. The DimPlot function generates a plot showing the spatial distribution of these clusters. UMAP helps in visualizing the complex high-dimensional data in a comprehensible manner, highlighting the relationships between different cell clusters.
+  
+```r
 selected_filtered_genes <- subset(selected_markers, p_val_adj <= 0.5 & abs(avg_log2FC) >=1)
 markers <- FindAllMarkers(spatial_data, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
 
@@ -130,6 +137,7 @@ filtered_genes2 <- subset(markers, p_val_adj <= 0.05)
 
 cluster_identity <- Idents(spatial_data, Cells = all)
 ```
+- **Understanding code** - These lines identify marker genes that distinguish between clusters of interest. The FindMarkers function compares two clusters (1 and 2 in this case) to find genes that are significantly differentially expressed, selecting those with a minimum percentage (min.pct) and log-fold change (logfc.threshold). Further filtering refines the list of significant marker genes based on adjusted p-values and expression changes. Identifying marker genes helps in understanding the biological characteristics and differences between cell clusters. It finally assigns each cell to a specific cluster, providing a comprehensive overview of the cell population's structure.
 
 - **Sample Output**
 ```md
