@@ -14,15 +14,6 @@ After preprocessing with Spaceranger, data is loaded into R for analysis with Se
 2. **Install RStudio**:
    - Download and install RStudio from [RStudio](https://rstudio.com/products/rstudio/download/).
 
-
-### Installing Required Packages
-
-Open RStudio and run the following commands to install the necessary packages:
-
-```r
-install.packages(c("patchwork", "HGNChelper", "openxlsx", "data.tree", "scater", "hdf5r", "dplyr", "Seurat", "ggraph", "igraph", "tidyverse"))
-BiocManager::install("rhdf5")
-devtools::install_github("IanevskiAleksandr/sc-type")
 ```
 ## Step-By-Step Runthrough
 ### 1. **Open RMD file and set the working directory**
