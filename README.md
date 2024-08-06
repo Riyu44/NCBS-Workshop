@@ -41,21 +41,37 @@ setwd("/path/to/your/directory")
 # devtools::install_github("thomasp85/patchwork")
 # install.packages('HGNChelper')
 # install.packages('openxlsx')
-# install.packages('ggraph')
 # install.packages('data.tree')
-# BiocManager::install("rhdf5")
-# BiocManager::install("scater")
 # install.packages("hdf5r")
-#install.packages("hdf5r", configure.args="--with-hdf5=/home/user/Downloads/miniconda/pkgs/hdf5-1.12.2-nompi_h4df4325_100/bin/h5cc")
+# install.packages('ggraph')
+# install.packages("igraph")
+# install.packages("tidyverse")
+# install.packages('Seurat')
 
-library(patchwork)
-library(HGNChelper)
-library(openxlsx)
-library(data.tree)
-library(scater)
-library(hdf5r)
-lapply(c("dplyr","Seurat","HGNChelper","openxlsx"), library, character.only = TRUE)
-lapply(c("ggraph","igraph","tidyverse", "data.tree","scater"), library, character.only = TRUE)
+# BiocManager::install("scater")
+
+list.of.packages <- c("patchwork",
+                      "HGNChelper",
+                      "openxlsx",
+                      "data.tree",
+                      "hdf5r",
+                      "Seurat",
+                      "ggraph",
+                      "igraph",
+                      "tidyverse"
+                      )
+
+#new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+#if(length(new.packages)>0) install.packages(new.packages, dependencies = T)
+
+# BioconductoR packages
+list.of.bioc.packages<- c("scater")
+#new.packages.bioc <- list.of.bioc.packages[!(list.of.bioc.packages %in% installed.packages()[,"Package"])]
+
+#if(length(new.packages.bioc)>0)if (!requireNamespace("BiocManager")) install.packages("BiocManager")
+#BiocManager::install(new.packages.bioc, update = FALSE)
+
+lapply(c(list.of.packages,list.of.bioc.packages), require, character.only = TRUE)
 ```
 - **Output** - This block should install all the packages without any errors (ignore the Warnings)
 - **Error resolution** - _"no package called 'package_name'"_ can be resolved using the command _install.packages("package_name")_
@@ -63,8 +79,9 @@ lapply(c("ggraph","igraph","tidyverse", "data.tree","scater"), library, characte
 3. **Load Data**
 ```r
 setwd("/DATA1/Visium_FFPE2")
-spatial_data <- Load10X_Spatial("/DATA1/Visium_FFPE2/Sample_JB/outs",
-                                filename = "filtered_feature_bc_matrix.h5",
+
+spatial_data <- Load10X_Spatial("/Enter/your/folder/location/outs",
+                                filename = "CytAssist_11mm_FFPE_Human_Lung_Cancer_filtered_feature_bc_matrix.h5",
                                 assay = "RNA",
                                 slice = "slice2",
                                 filter.matrix = TRUE,
