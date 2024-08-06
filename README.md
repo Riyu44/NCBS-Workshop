@@ -79,7 +79,7 @@ lapply(c(list.of.packages,list.of.bioc.packages), require, character.only = TRUE
 
 ### 3. **Load Data**
 
-example data can be downloaded from this [link] (https://csciitd-my.sharepoint.com/:u:/g/personal/bez208514_iitd_ac_in/ETuBW57TNDlPv2YLyavEJswBR-09TEvc2T2xCD5QEpp3hQ?e=czh57Q)
+example data can be downloaded from this [link](https://csciitd-my.sharepoint.com/:u:/g/personal/bez208514_iitd_ac_in/ETuBW57TNDlPv2YLyavEJswBR-09TEvc2T2xCD5QEpp3hQ?e=czh57Q)
 
 ```r
 spatial_data <- Load10X_Spatial("/Enter/your/folder/location/outs",
