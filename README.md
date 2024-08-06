@@ -25,7 +25,7 @@ BiocManager::install("rhdf5")
 devtools::install_github("IanevskiAleksandr/sc-type")
 ```
 ## Step-By-Step Runthrough
-1. **Open RMD file and set the working directory**
+### 1. **Open RMD file and set the working directory**
 - In RStudio, go to _File -> Open File..._ and select the _"spatial_clustering.Rmd"_ file.
 - Now we will run each code block one at a time.
 - Ensure the working directory is set correctly. You can set it in the RMD file itself using:
@@ -33,7 +33,7 @@ devtools::install_github("IanevskiAleksandr/sc-type")
 setwd("/path/to/your/directory")
 ```
 
-2. **Load Packages**
+### 2. **Load Packages**
 ```r
 # load libraries
 #p <- installed.packages()
@@ -76,7 +76,8 @@ lapply(c(list.of.packages,list.of.bioc.packages), require, character.only = TRUE
 - **Output** - This block should install all the packages without any errors (ignore the Warnings)
 - **Error resolution** - _"no package called 'package_name'"_ can be resolved using the command _install.packages("package_name")_
 
-3. **Load Data**
+
+### 3. **Load Data**
 ```r
 setwd("/DATA1/Visium_FFPE2")
 
@@ -92,7 +93,8 @@ spatial_data <- Load10X_Spatial("/Enter/your/folder/location/outs",
 - **Output** - This block should load the spatial transcriptomics data. You should see an object named "_spatial_data_" in your R environment
 - **Make sure your working directory PATH and data PATH are correct**
 
-4. **Normalize Data**
+
+### 4. **Normalize Data**
 ```r
 spatial_data[["percent.mt"]] <- PercentageFeatureSet(spatial_data, pattern = "^MT-")
 spatial_data <- NormalizeData(spatial_data, normalization.method = "LogNormalize", scale.factor = 10000)
@@ -100,14 +102,16 @@ spatial_data <- FindVariableFeatures(spatial_data, selection.method = "vst", nfe
 ```
 - **Output** - This block normalizes the data and identifies variable features. You should see additional metadata and variable features added to the "_spatial_data_" object.
 
-5. **Scale Data and Run PCA**
+
+### 5. **Scale Data and Run PCA**
 ```r
 spatial_data <- ScaleData(spatial_data, features = rownames(spatial_data))
 spatial_data <- RunPCA(spatial_data, features = VariableFeatures(object = spatial_data))
 ```
 - **Output** - This block scales the data and performs PCA. You should see PCA results stored in the spatial_data object.
 
-6. **Cluster and Filter**
+
+### 6. **Cluster and Filter**
 ```r
 # Check number of PC components (we selected 10 PCs for downstream analysis, based on Elbow plot)
 #ElbowPlot(spatial_data)
@@ -174,7 +178,8 @@ cluster_identity <- Idents(spatial_data, Cells = all)
 ## Calculating cluster 9
 ```
 
-7. **Cell Type Assignment - Annotations**
+
+### 7. **Cell Type Assignment - Annotations**
 ```r
 # CELL TYPE ASSIGNMENT
 # load gene set preparation function
@@ -251,7 +256,8 @@ print(sctype_scores[,1:3])
 ## 10 9       Unknown               -27.7
 ```
 
-8. **Plotting and Visualizations**
+
+### 8. **Plotting and Visualizations**
 ```r
 ## OVERLAYING IDENTIFIED CELL-TYPES ON PLOTS
 spatial_data@meta.data$customclassif = ""
@@ -274,14 +280,16 @@ p1 + p2
 - **Sample Output**
 ![Plot image](utils/p1.png)
 
-9. **Dot Plot Visualizations**
+
+### 9. **Dot Plot Visualizations**
 ```r
 DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6","DNAAF1","MUC4","RARRES2","SCGB1A1","SFTPA2","SFTPB","SFTPC"), dot.scale = 4) #ACC_markers_fromGSEA
 ```
 - **Sample Output**
 ![Plot image](utils/p2.png)
 
-10. **Dot Plot - 2**
+
+### 10. **Dot Plot - 2**
 ```r
 DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6","DNAAF1","MUC4","RARRES2","SCGB1A1","SFTPA2","SFTPB","SFTPC"), dot.scale = 4) #ACC_markers_fromGSEA
 ```
