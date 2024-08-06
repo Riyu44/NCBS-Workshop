@@ -287,7 +287,7 @@ p1 + p2
 DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6","DNAAF1","MUC4","RARRES2","SCGB1A1","SFTPA2","SFTPB","SFTPC"), dot.scale = 4) #ACC_markers_fromGSEA
 ```
 - **Sample Output**
-![Plot image](utils/p2.png)
+![Plot image](utils/dot_plot.png)
 
 
 ### 10. **Dot Plot - 2**
@@ -295,4 +295,4 @@ DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6
 DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6","DNAAF1","MUC4","RARRES2","SCGB1A1","SFTPA2","SFTPB","SFTPC"), dot.scale = 4) #ACC_markers_fromGSEA
 ```
 - **Sample Output**
-![Plot image](utils/p3.png)
+![Plot image](utils/dotplot_2.png)
