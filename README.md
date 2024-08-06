@@ -79,7 +79,7 @@ lapply(c(list.of.packages,list.of.bioc.packages), require, character.only = TRUE
 
 ### 3. **Load Data**
 ```r
-setwd("/DATA1/Visium_FFPE2")
+setwd("/my/analysis/directory")
 
 spatial_data <- Load10X_Spatial("/Enter/your/folder/location/outs",
                                 filename = "CytAssist_11mm_FFPE_Human_Lung_Cancer_filtered_feature_bc_matrix.h5",
