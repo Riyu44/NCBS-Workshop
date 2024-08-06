@@ -205,7 +205,7 @@ source("https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/R/sct
 # DB file
 db_ = "https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/ScTypeDB_full.xlsx";
 ```
-- **Understanding Output** - These lines load the R scripts for gene set preparation and cell type annotation directly from a GitHub repository. The source function is used to execute the R scripts from the provided URLs.
+- **Understanding Code** - These lines load the R scripts for gene set preparation and cell type annotation directly from a GitHub repository. The source function is used to execute the R scripts from the provided URLs.
 
 
 #### Detecting Tissue-type
@@ -218,7 +218,7 @@ source("https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/R/aut
 # we could make a drop-down for this
 tissue = "Lung" # e.g. Immune system,Pancreas,Liver,Eye,Kidney,Brain,Lung,Adrenal,Heart,Intestine,Muscle,Placenta,Spleen,Stomach,Thymus 
 ```
-- **Understanding Output** - This part sources the script for auto-detecting the tissue type. The commented line shows how to use the auto_detect_tissue_type function to guess the tissue type of the data based on the provided database file and the Seurat object containing the spatial transcriptomics data
+- **Understanding Code** - This part sources the script for auto-detecting the tissue type. The commented line shows how to use the auto_detect_tissue_type function to guess the tissue type of the data based on the provided database file and the Seurat object containing the spatial transcriptomics data
 
 
 #### Prepare Gene Sets and assign cell type
