@@ -234,20 +234,27 @@ print(sctype_scores[,1:3])
 ```
 - **Sample Output**
 ```r
-## # A tibble: 10 × 3
-## # Groups:   cluster [10]
-##    cluster type                 scores
-##    <fct>   <chr>                 <dbl>
-##  1 6       Immune system cells   761. 
-##  2 1       Fibroblasts          1215. 
-##  3 5       Secretory cell        173. 
-##  4 2       Fibroblasts           241. 
-##  5 4       Airway goblet cells    84.4
-##  6 3       Airway goblet cells   272. 
-##  7 7       Alveolar macrophages   74.0
-##  8 8       Unknown                37.0
-##  9 0       Epithelial cells      163. 
-## 10 9       Unknown               -27.7
+# A tibble: 17 × 3
+# Groups:   cluster [17]
+   cluster type                              scores
+   <fct>   <chr>                              <dbl>
+ 1 9       Airway goblet cells               144.  
+ 2 6       Endothelial cell                  460.  
+ 3 3       Unknown                            -9.31
+ 4 8       Unknown                           -17.0 
+ 5 1       Unknown                            75.7 
+ 6 4       Unknown                            57.8 
+ 7 16      Immune system cells                41.4 
+ 8 7       Epithelial cells                  286.  
+ 9 11      Immune system cells              1569.  
+10 2       Unknown                           -12.2 
+11 13      Airway goblet cells               120.  
+12 10      Unknown                            46.4 
+13 0       Unknown                           119.  
+14 5       Endothelial cell                  244.  
+15 12      Pulmonary alveolar type II cells 1951.  
+16 14      Epithelial cells                  248.  
+17 15      Fibroblasts                      1101.  
 ```
 
 
