@@ -186,6 +186,8 @@ cluster_identity <- Idents(spatial_data, Cells = all)
 
 
 ### 7. **Cell Type Assignment - Annotations**
+
+#### Loading Database and Prerequisite files
 ```r
 # CELL TYPE ASSIGNMENT
 # load gene set preparation function
@@ -202,7 +204,12 @@ source("https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/R/sct
 #In addition, provide a tissue type your data belongs to:
 # DB file
 db_ = "https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/ScTypeDB_full.xlsx";
+```
+- **Understanding Output** - These lines load the R scripts for gene set preparation and cell type annotation directly from a GitHub repository. The source function is used to execute the R scripts from the provided URLs.
 
+
+#### Detecting Tissue-type
+```r
 #auto-detect tissue
 source("https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/R/auto_detect_tissue_type.R")
 #tissue_guess = auto_detect_tissue_type(path_to_db_file = db_, seuratObject = spatial_data, scaled = TRUE, assay = "RNA")  # if scaled = TRUE, make sure the data is scaled, as seuratObject[[assay]]@scale.data is used. If you just created a Seurat object, without any scaling and normalization, set scaled = FALSE, seuratObject[[assay]]@counts will be used         
@@ -210,7 +217,12 @@ source("https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/R/aut
 # Select tissue type : Default: "Immune system"
 # we could make a drop-down for this
 tissue = "Lung" # e.g. Immune system,Pancreas,Liver,Eye,Kidney,Brain,Lung,Adrenal,Heart,Intestine,Muscle,Placenta,Spleen,Stomach,Thymus 
+```
+- **Understanding Output** - This part sources the script for auto-detecting the tissue type. The commented line shows how to use the auto_detect_tissue_type function to guess the tissue type of the data based on the provided database file and the Seurat object containing the spatial transcriptomics data
 
+
+#### Prepare Gene Sets and assign cell type
+```r
 # prepare gene sets
 gs_list = gene_sets_prepare(db_, tissue)
 
@@ -227,8 +239,14 @@ es.max = sctype_score(scRNAseqData = spatial_data[["RNA3"]]@scale.data,
                       scaled = TRUE,
                       gs = gs_list$gs_positive,
                       gs2 = gs_list$gs_negative)
+```
+- **Understanding Code** - In these lines:
+The RNA assay in the spatial_data object is converted to a new assay called "RNA3".
+The sctype_score function is used to score each cell for the likelihood of belonging to specific cell types based on the prepared gene sets. The scRNAseqData parameter should correspond to the scaled data of the RNA assay.
 
 
+#### Merge Results by CLusters
+```r
 # NOTE: scRNAseqData parameter should correspond to your input scRNA-seq matrix. 
 # In case Seurat is used, it is either spatial_data[["RNA"]]@scale.data (default), spatial_data[["SCT"]]@scale.data, in case sctransform is used for normalization,
 # or spatial_data[["integrated"]]@scale.data, in case a joint analysis of multiple single-cell datasets is performed.
@@ -239,11 +257,23 @@ cL_resutls = do.call("rbind", lapply(unique(spatial_data@meta.data$seurat_cluste
   head(data.frame(cluster = cl, type = names(es.max.cl), scores = es.max.cl, ncells = sum(spatial_data@meta.data$seurat_clusters==cl)), 10)
 }))
 sctype_scores = cL_resutls %>% group_by(cluster) %>% top_n(n = 1, wt = scores)  
+```
+- **Understanding Code** - This part processes the scores:
+It calculates the total scores for each cell type within each cluster.
+It organizes the results into a data frame where each row represents a cluster and the top-scoring cell types within that cluster.
 
+
+#### Low-confidence clusters set to unknown type
+```r
 # set low-confident (low ScType score) clusters to "unknown"
 sctype_scores$type[as.numeric(as.character(sctype_scores$scores)) < sctype_scores$ncells/4] = "Unknown"
 print(sctype_scores[,1:3])
 ```
+- **Understanding Code** - This final part adjusts the results:
+It labels clusters with low-confidence scores as "Unknown". A threshold is set such that if a cell type's score is less than one-fourth of the number of cells in the cluster, it is marked as "Unknown".
+It prints the relevant columns of the final scores data frame.
+
+
 - **Sample Output**
 ```r
 # A tibble: 17 × 3
