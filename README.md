@@ -15,12 +15,13 @@ After preprocessing with Spaceranger, data is loaded into R for analysis with Se
 2. **Install RStudio**:
    - Download and install RStudio from [RStudio](https://rstudio.com/products/rstudio/download/).
 
-```
+
 ## Step-By-Step Runthrough
 ### 1. **Open RMD file and set the working directory**
 - In RStudio, go to _File -> Open File..._ and select the _"spatial_clustering.Rmd"_ file.
 - Now we will run each code block one at a time.
 - Ensure the working directory is set correctly. You can set it in the RMD file itself using:
+
 ```r
 setwd("/path/to/your/directory")
 ```
