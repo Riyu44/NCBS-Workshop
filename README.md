@@ -95,6 +95,7 @@ spatial_data <- NormalizeData(spatial_data, normalization.method = "LogNormalize
 spatial_data <- FindVariableFeatures(spatial_data, selection.method = "vst", nfeatures = 2000)
 ```
 - **Output** - This block normalizes the data and identifies variable features. You should see additional metadata and variable features added to the "_spatial_data_" object.
+- **Understanding code** - These lines process spatial transcriptomics data in three steps. First, they calculate the percentage of mitochondrial gene expression to identify potentially stressed or dead cells, which can affect data quality. Next, they normalize the gene expression data to make levels comparable across cells, accounting for technical variations. Here, we have used "_LogNormalize_" method as it stabilizes variance and technical noise across a wide range of gene expression values. Finally, they identify the top 2,000 most variable genes, focusing on those with significant expression changes, which are likely to be biologically informative and useful for further analysis.
 
 
 ### 5. **Scale Data and Run PCA**
@@ -103,6 +104,7 @@ spatial_data <- ScaleData(spatial_data, features = rownames(spatial_data))
 spatial_data <- RunPCA(spatial_data, features = VariableFeatures(object = spatial_data))
 ```
 - **Output** - This block scales the data and performs PCA. You should see PCA results stored in the spatial_data object.
+- **Understanding the code** - Code ensures that data is subsequently scaled to standardize gene expression levels, making genes comparable by removing biases due to different expression ranges. Finally, Principal Component Analysis (PCA) is performed on these variable features to reduce dimensionality, preserving significant variability and highlighting essential patterns for downstream clustering and visualization. These steps collectively ensure robust, accurate, and insightful analysis of spatial transcriptomics data.
 
 
 ### 6. **Cluster and Filter**
