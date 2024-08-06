@@ -279,7 +279,7 @@ p2 <- SpatialDimPlot(spatial_data, label = TRUE, label.size = 3, cols = ccolss)
 p1 + p2
 ```
 - **Sample Output**
-![Plot image](utils/p1.png)
+![Plot image](utils/p1_p2.png)
 
 
 ### 9. **Dot Plot Visualizations**
