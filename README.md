@@ -21,9 +21,7 @@ Example samplesheet:
 
 ## Summary of the spatial sequencing run
 
-<a href="[https://github.com](utils/seq_run.png)" target="_blank">
-  <img src="https://cf.10xgenomics.com/samples/spatial-exp/2.0.1/CytAssist_11mm_FFPE_Human_Lung_Cancer/CytAssist_11mm_FFPE_Human_Lung_Cancer_web_summary.html" alt="summary link" />
-</a>
+[![summary link](utils/seq_run.png)](https://cf.10xgenomics.com/samples/spatial-exp/2.0.1/CytAssist_11mm_FFPE_Human_Lung_Cancer/CytAssist_11mm_FFPE_Human_Lung_Cancer_web_summary.html)
 
 ## Setup Instructions
 
