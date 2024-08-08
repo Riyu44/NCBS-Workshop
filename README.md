@@ -18,9 +18,9 @@ Next, we will explore cell type assignment, overlaying cell types on spatial plo
 ```
 spaceranger mkfastq --id=tiny-bcl \
                     --run=the path of Illumina BCL run folder \
-                    --csv=spaceranger-tiny-bcl-simple-1.0.0.csv
+                    --csv=samplesheet.csv
 ```
-Example samplesheet:
+Example ```samplesheet.csv```:
 
 ![Plot image](utils/samplesheet.png)
 
