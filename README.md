@@ -19,6 +19,10 @@ Example samplesheet:
 
 ![Plot image](utils/bcl2fastq.png)
 
+## Summary of the spatial sequencing run
+
+[![summary link](utils/seq_run.png)](https://cf.10xgenomics.com/samples/spatial-exp/2.0.1/CytAssist_11mm_FFPE_Human_Lung_Cancer/CytAssist_11mm_FFPE_Human_Lung_Cancer_web_summary.html)
+
 ## Setup Instructions
 
 ### Prerequisites
