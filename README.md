@@ -111,7 +111,7 @@ lapply(c(list.of.packages,list.of.bioc.packages), require, character.only = TRUE
 
 ### 3. Load Data
 
-example data can be downloaded from this [link](https://csciitd-my.sharepoint.com/my?id=%2Fpersonal%2Fbez208514%5Fiitd%5Fac%5Fin%2FDocuments%2FICGEB%5Fworkshop&FolderCTID=0x012000B659D501CD9AC245929B050DAB0630DF)
+example data can be downloaded from this [link](https://csciitd-my.sharepoint.com/:f:/g/personal/bez208514_iitd_ac_in/Evx4LMvx111Cp3wx9eVNaiQB1tzmMTvjtstln3hJ5mrnAA?e=MwkVrk)
 ```r
 spatial_data <- Load10X_Spatial("/Enter/your/folder/location/outs",
                                 filename = "CytAssist_11mm_FFPE_Human_Lung_Cancer_filtered_feature_bc_matrix.h5",
