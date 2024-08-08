@@ -1,13 +1,15 @@
 
 # ICGEB Workshop - Spatial Data Analysis
 
-Post sequencing of spatial transcriptomics libraries, raw BCL files are obtained from the Illumina sequencing platform. Initial steps include demultiplexing samples and using Spaceranger to generate spatially resolved gene expression profiles by aligning reads, counting UMIs, and assigning spatial coordinates.
-
-After preprocessing with Spaceranger, data is loaded into R for analysis with Seurat and additional packages. Participants will learn cell type assignment, overlaying cell types on spatial plots, manual cell type annotation, and identifying differential gene expression across tissue regions.
+The initial steps involve demultiplexing samples using ```spaceranger mkfastq```, followed by generating spatially resolved gene expression profiles with Spaceranger. This process includes aligning reads, counting UMIs, and assigning spatial coordinates to the data
 
 ![Plot image](utils/10X_run.png)
 
 Reference [link](https://www.10xgenomics.com/support/software/space-ranger/latest/analysis/inputs/fastqs-generating-fastqs)
+
+After preprocessing with Spaceranger, the data is imported into R for analysis with Seurat and supplementary packages.
+
+Next, we will explore cell type assignment, overlaying cell types on spatial plots, manual cell type annotation, and identifying differential gene expression across tissue regions.
 
 ## Spaceranger run
 
