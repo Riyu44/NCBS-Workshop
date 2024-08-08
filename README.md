@@ -79,21 +79,6 @@ setwd("/path/to/your/directory")
 
 ### 2. **Load Packages**
 ```r
-# load libraries
-#p <- installed.packages()
-#colnames(p)
-# devtools::install_github("thomasp85/patchwork")
-# install.packages('HGNChelper')
-# install.packages('openxlsx')
-# install.packages('data.tree')
-# install.packages("hdf5r")
-# install.packages('ggraph')
-# install.packages("igraph")
-# install.packages("tidyverse")
-# install.packages('Seurat')
-
-# BiocManager::install("scater")
-
 list.of.packages <- c("patchwork",
                       "HGNChelper",
                       "openxlsx",
@@ -105,15 +90,15 @@ list.of.packages <- c("patchwork",
                       "tidyverse"
                       )
 
-#new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-#if(length(new.packages)>0) install.packages(new.packages, dependencies = T)
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)>0) install.packages(new.packages, dependencies = T)
 
 # BioconductoR packages
 list.of.bioc.packages<- c("scater")
-#new.packages.bioc <- list.of.bioc.packages[!(list.of.bioc.packages %in% installed.packages()[,"Package"])]
+new.packages.bioc <- list.of.bioc.packages[!(list.of.bioc.packages %in% installed.packages()[,"Package"])]
 
-#if(length(new.packages.bioc)>0)if (!requireNamespace("BiocManager")) install.packages("BiocManager")
-#BiocManager::install(new.packages.bioc, update = FALSE)
+if(length(new.packages.bioc)>0)if (!requireNamespace("BiocManager")) install.packages("BiocManager")
+BiocManager::install(new.packages.bioc, update = FALSE)
 
 lapply(c(list.of.packages,list.of.bioc.packages), require, character.only = TRUE)
 ```
