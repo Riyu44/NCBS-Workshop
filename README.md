@@ -20,7 +20,8 @@ Example samplesheet:
 Running spaceranger mkfastq:
 
 ```
-conda activate bcl2fastq_2.20 #switch from base environment to bcl2fastq environment
+#switch from base environment to bcl2fastq environment
+conda activate bcl2fastq_2.20
 ```
 Example BCL file screenshot:
 
