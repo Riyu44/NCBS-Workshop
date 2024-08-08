@@ -125,7 +125,6 @@ spatial_data <- Load10X_Spatial("/Enter/your/folder/location/outs",
 
 ### 4. **Normalize Data**
 ```r
-spatial_data[["percent.mt"]] <- PercentageFeatureSet(spatial_data, pattern = "^MT-")
 spatial_data <- NormalizeData(spatial_data, normalization.method = "LogNormalize", scale.factor = 10000)
 spatial_data <- FindVariableFeatures(spatial_data, selection.method = "vst", nfeatures = 2000)
 ```
