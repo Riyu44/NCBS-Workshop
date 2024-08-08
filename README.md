@@ -5,7 +5,8 @@ Post sequencing of spatial transcriptomics libraries, raw BCL files are obtained
 
 After preprocessing with Spaceranger, data is loaded into R for analysis with Seurat and additional packages. Participants will learn cell type assignment, overlaying cell types on spatial plots, manual cell type annotation, and identifying differential gene expression across tissue regions.
 
-![Plot image](utils/10X_run.png) [link](https://www.10xgenomics.com/support/software/space-ranger/latest/analysis/inputs/fastqs-generating-fastqs)
+![Plot image](utils/10X_run.png) 
+Reference [link](https://www.10xgenomics.com/support/software/space-ranger/latest/analysis/inputs/fastqs-generating-fastqs)
 
 ## Spaceranger run
 
