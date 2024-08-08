@@ -149,6 +149,13 @@ $$
 spatial_data <- ScaleData(spatial_data, features = rownames(spatial_data))
 spatial_data <- RunPCA(spatial_data, features = VariableFeatures(object = spatial_data))
 ```
+
+* The formula for each gene (i) in each cell (j) is:
+
+$$
+\text{Scaled Expression}_{ij} = \frac{\text{Expression}_ij - \text{Mean Expression}_i}{\text{Standard Deviation}_i}
+$$
+
 - **Output** - This block scales the data and performs PCA. You should see PCA results stored in the spatial_data object.
 - **Understanding the code** - Code ensures that data is subsequently scaled to standardize gene expression levels, making genes comparable by removing biases due to different expression ranges. Finally, Principal Component Analysis (PCA) is performed on these variable features to reduce dimensionality, preserving significant variability and highlighting essential patterns for downstream clustering and visualization. These steps collectively ensure robust, accurate, and insightful analysis of spatial transcriptomics data.
 
