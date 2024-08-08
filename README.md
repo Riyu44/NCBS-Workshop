@@ -176,6 +176,8 @@ spatial_data <- RunUMAP(spatial_data, dims = 1:30)
 clusters_plot<-DimPlot(spatial_data, reduction = "umap")
 cluster_of_interest <- c(1,2)
 selected_markers <- FindMarkers(spatial_data, ident.1 = cluster_of_interest[1], ident.2 = cluster_of_interest[2], only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+
+selected_filtered_genes <- subset(selected_markers, p_val_adj <= 0.05 & abs(avg_log2FC) >=1)
 ```
 - **Understanding code** - UMAP (Uniform Manifold Approximation and Projection) is used to reduce the dimensionality of the data and visualize clusters in a 2D space. The DimPlot function generates a plot showing the spatial distribution of these clusters. UMAP helps in visualizing the complex high-dimensional data in a comprehensible manner, highlighting the relationships between different cell clusters.
 
@@ -183,15 +185,13 @@ selected_markers <- FindMarkers(spatial_data, ident.1 = cluster_of_interest[1], 
 
 #### Marker Gene Identification
 ```r
-selected_filtered_genes <- subset(selected_markers, p_val_adj <= 0.5 & abs(avg_log2FC) >=1)
+
 markers <- FindAllMarkers(spatial_data, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
 
-filtered_genes <- subset(markers, p_val_adj <= 0.5 & abs(avg_log2FC) >=1)
-filtered_genes2 <- subset(markers, p_val_adj <= 0.05)
-
-cluster_identity <- Idents(spatial_data, Cells = all)
+filtered_genes <- subset(markers, p_val_adj <= 0.05 & abs(avg_log2FC) >=1)
 ```
-- **Understanding code** - These lines identify marker genes that distinguish between clusters of interest. The FindMarkers function compares two clusters (1 and 2 in this case) to find genes that are significantly differentially expressed, selecting those with a minimum percentage (min.pct) and log-fold change (logfc.threshold). Further filtering refines the list of significant marker genes based on adjusted p-values and expression changes. Identifying marker genes helps in understanding the biological characteristics and differences between cell clusters. It finally assigns each cell to a specific cluster, providing a comprehensive overview of the cell population's structure.
+- **Understanding code** - These lines identify marker genes that distinguish between clusters of interest. The ```FindAllMarkers``` function in Seurat is used to identify differentially expressed genes (markers) between clusters in single-cell RNA-seq data. It compares each cluster against all other clusters and returns the top marker genes for each cluster. 
+Further filtering refines the list of significant marker genes based on adjusted p-values and expression changes. Identifying marker genes helps understand the biological characteristics and differences between cell clusters. It finally assigns each cell to a specific cluster, providing a comprehensive overview of the cell population's structure.
 
 - **Sample Output**
 ```md
