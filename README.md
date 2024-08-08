@@ -17,6 +17,15 @@ Example samplesheet:
 
 ![Plot image](utils/samplesheet.png)
 
+Running spaceranger mkfastq:
+
+```
+conda activate bcl2fastq_2.20 #switch from base environment to bcl2fastq environment
+```
+Example BCL file screenshot:
+
+![Plot image](utils/binary_file.png)
+
 ![Plot image](utils/bcl2fastq.png)
 
 ## Summary of the spatial sequencing run
