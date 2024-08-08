@@ -7,7 +7,16 @@ After preprocessing with Spaceranger, data is loaded into R for analysis with Se
 
 ## Spaceranger run
 
-1. BCL files are demultiplexed using a samplesheet.csv file that contains sample index IDs/sequences for different samples pooled together for sequencing on Illumina platform.
+1. BCL files are demultiplexed using a samplesheet.csv file that contains sample index IDs/sequences for different samples pooled together for sequencing on Illumina platform. This is done using spaceranger mkfastq function.
+
+spaceranger mkfastq --id=tiny-bcl \
+                    --run=the path of Illumina BCL run folder \
+                    --csv=spaceranger-tiny-bcl-simple-1.0.0.csv
+
+Example samplesheet:
+
+![Plot image](utils/bcl2fastq.png)
+
 ![Plot image](utils/bcl2fastq.png)
 
 ## Setup Instructions
