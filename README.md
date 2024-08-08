@@ -13,7 +13,8 @@ Next, we will explore cell type assignment, overlaying cell types on spatial plo
 
 ## Spaceranger run
 
-1. BCL files are demultiplexed using a samplesheet.csv file that contains sample index IDs/sequences for different samples pooled together for sequencing on Illumina platform. This is done using spaceranger mkfastq function.
+1. BCL files are demultiplexed using a ```samplesheet.csv``` file that contains sample index IDs/sequences for different samples pooled together for sequencing on Illumina platform. This is done using ```spaceranger mkfastq``` function.
+
 ```
 spaceranger mkfastq --id=tiny-bcl \
                     --run=the path of Illumina BCL run folder \
