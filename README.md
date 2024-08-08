@@ -131,9 +131,18 @@ spatial_data <- Load10X_Spatial("/Enter/your/folder/location/outs",
 spatial_data <- NormalizeData(spatial_data, normalization.method = "LogNormalize", scale.factor = 10000)
 spatial_data <- FindVariableFeatures(spatial_data, selection.method = "vst", nfeatures = 2000)
 ```
-- **Output** - This block normalizes the data and identifies variable features. You should see additional metadata and variable features added to the "_spatial_data_" object.
-- **Understanding code** - These lines process spatial transcriptomics data in three steps. First, they calculate the percentage of mitochondrial gene expression to identify potentially stressed or dead cells, which can affect data quality. Next, they normalize the gene expression data to make levels comparable across cells, accounting for technical variations. Here, we have used "_LogNormalize_" method as it stabilizes variance and technical noise across a wide range of gene expression values. Finally, they identify the top 2,000 most variable genes, focusing on those with significant expression changes, which are likely to be biologically informative and useful for further analysis.
 
+Expression data is normalised using the formula below
+
+$$
+\text{Normalized Expression} = \log_{1p}\left(\frac{\text{Gene Expression}}{\text{Total Expression per Cell}} \times \text{scale.factor}\right)
+$$
+
+* The ```FindVariableFeatures``` function in Seurat is used to identify the most variable genes across cells in your dataset. These highly variable genes are typically more informative for downstream analyses like clustering, dimensionality reduction, and differential expression.
+
+* ```selection.method = "vst"``` : This parameter specifies the method used to select the variable features. "vst" stands for “variance-stabilizing transformation,” which is a popular method in Seurat for identifying highly variable genes.
+
+* ```nfeatures = 2000``` : This specifies the number of top variable genes to select. In this case, the function will identify the 2000 most variable genes across all cells in your dataset.
 
 ### 5. **Scale Data and Run PCA**
 ```r
