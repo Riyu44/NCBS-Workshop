@@ -1,4 +1,3 @@
-
 # ICGEB Workshop - Spatial Data Analysis
 
 The initial steps involve demultiplexing samples using ```spaceranger mkfastq```, followed by generating spatially resolved gene expression profiles with Spaceranger. This process includes aligning reads, counting UMIs, and assigning spatial coordinates to the data
@@ -13,6 +12,7 @@ Next, we will explore cell type assignment, overlaying cell types on spatial plo
 
 ## Spaceranger run
 
+### mkfastq
 1. BCL files are demultiplexed using a ```samplesheet.csv``` file that contains sample index IDs/sequences for different samples pooled together for sequencing on Illumina platform. This is done using ```spaceranger mkfastq``` function.
 
 ```
@@ -35,6 +35,9 @@ Example BCL file screenshot:
 ![Plot image](utils/binary_file.png)
 
 ![Plot image](utils/bcl2fastq.png)
+
+
+### count
 
 Run spaceranger count to generate fastq files and other output files
 
@@ -68,7 +71,7 @@ spaceranger count --id="Visium_FFPE_Mouse_Brain" \
 
 
 ## Step-By-Step Runthrough
-### 1. **Open RMD file and set the working directory**
+### 1. Open RMD file and set the working directory
 - In RStudio, go to _File -> Open File..._ and select the _"spatial_clustering.Rmd"_ file.
 - Now we will run each code block one at a time.
 - Ensure the working directory is set correctly. You can set it in the RMD file itself using:
@@ -77,7 +80,7 @@ spaceranger count --id="Visium_FFPE_Mouse_Brain" \
 setwd("/path/to/your/directory")
 ```
 
-### 2. **Load Packages**
+### 2. Load Packages
 ```r
 list.of.packages <- c("patchwork",
                       "HGNChelper",
@@ -106,7 +109,7 @@ lapply(c(list.of.packages,list.of.bioc.packages), require, character.only = TRUE
 - **Error resolution** - _"no package called 'package_name'"_ can be resolved using the command _install.packages("package_name")_
 
 
-### 3. **Load Data**
+### 3. Load Data
 
 example data can be downloaded from this [link](https://csciitd-my.sharepoint.com/my?id=%2Fpersonal%2Fbez208514%5Fiitd%5Fac%5Fin%2FDocuments%2FICGEB%5Fworkshop&FolderCTID=0x012000B659D501CD9AC245929B050DAB0630DF)
 ```r
