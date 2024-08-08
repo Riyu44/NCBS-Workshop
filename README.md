@@ -15,7 +15,7 @@ spaceranger mkfastq --id=tiny-bcl \
 
 Example samplesheet:
 
-![Plot image](samplesheet.png)
+![Plot image](utils/samplesheet.png)
 
 ![Plot image](utils/bcl2fastq.png)
 
