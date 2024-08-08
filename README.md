@@ -33,6 +33,22 @@ Example BCL file screenshot:
 
 ![Plot image](utils/bcl2fastq.png)
 
+Run spaceranger count to generate fastq files and other output files
+
+```
+spaceranger count --id="Visium_FFPE_Mouse_Brain" \
+                 --description="Adult Mouse Brain (FFPE) using Mouse WTA Probe Set" \
+                 --transcriptome=refdata-gex-mm10-2020-A \
+                 --probe-set=Visium_Mouse_Transcriptome_Probe_Set_v1.0_mm10-2020-A.csv \
+                 --fastqs=datasets/Visium_FFPE_Mouse_Brain_fastqs \
+                 --image=datasets/Visium_FFPE_Mouse_Brain_image.jpg \
+                 --slide=V11J26-127 \
+                 --area=B1 \
+                 --reorient-images=true \
+                 --localcores=16 \
+                 --localmem=128
+```
+
 ## Summary of the spatial sequencing run
 
 [![summary link](utils/seq_run.png)](https://cf.10xgenomics.com/samples/spatial-exp/2.0.1/CytAssist_11mm_FFPE_Human_Lung_Cancer/CytAssist_11mm_FFPE_Human_Lung_Cancer_web_summary.html)
