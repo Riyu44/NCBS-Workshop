@@ -5,6 +5,8 @@ Post sequencing of spatial transcriptomics libraries, raw BCL files are obtained
 
 After preprocessing with Spaceranger, data is loaded into R for analysis with Seurat and additional packages. Participants will learn cell type assignment, overlaying cell types on spatial plots, manual cell type annotation, and identifying differential gene expression across tissue regions.
 
+![Plot image](utils/10X_run.png)
+
 ## Spaceranger run
 
 1. BCL files are demultiplexed using a samplesheet.csv file that contains sample index IDs/sequences for different samples pooled together for sequencing on Illumina platform. This is done using spaceranger mkfastq function.
