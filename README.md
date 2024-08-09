@@ -162,8 +162,8 @@ $$
 
 What ```RunPCA``` Does
 
-1.	*Simplifies Data*: Reduces the number of features (genes) by creating new “summary” features (principal components) that capture the most variation in your data.
-2.	*Prepares for Analysis*: Makes it easier to see patterns in your data, which helps with things like clustering or creating plots.
+1.	**Simplifies Data**: Reduces the number of features (genes) by creating new “summary” features (principal components) that capture the most variation in your data.
+2.	**Prepares for Analysis**: Makes it easier to see patterns in your data, which helps with things like clustering or creating plots.
 
 
 
@@ -171,8 +171,7 @@ What ```RunPCA``` Does
 #### Clustering
 ```r
 # Check number of PC components (we selected 10 PCs for downstream analysis, based on Elbow plot)
-#ElbowPlot(spatial_data)
-#ElbowPlot(spatial_data)
+ElbowPlot(spatial_data)
 
 # cluster and visualize
 spatial_data <- FindNeighbors(spatial_data, dims = 1:30)
@@ -182,6 +181,9 @@ spatial_data <- RunUMAP(spatial_data, dims = 1:30)
 
 The ```ElbowPlot``` function in Seurat is used to help you decide how many principal components (PCs) to use for further analysis after performing PCA. It creates a plot showing the amount of variance explained by each principal component.
 
+The ```FindNeighbors``` function in Seurat identifies the nearest neighbors of each cell in the dataset, which is a key step before clustering or other downstream analyses like UMAP or t-SNE. It builds a shared nearest neighbor (SNN) graph, which is then used by ```FindClusters``` to cluster cells based on their similarity.
+
+The ```FindClusters``` clusters the cells based on the similarity of expression. ```resolution``` indicates how fine clusters to make. Higher is the resolution, more clusters are made. 
 
 - **Understanding code** - These lines construct a shared nearest neighbor graph (FindNeighbors) using the top 30 PCs and identify clusters within the data (FindClusters) with a resolution parameter set to 0.8. This step groups cells into clusters based on their gene expression profiles, enabling the identification of distinct cell populations.
 
