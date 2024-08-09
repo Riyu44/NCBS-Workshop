@@ -248,9 +248,6 @@ Further filtering refines the list of significant marker genes based on adjusted
 ```r
 # CELL TYPE ASSIGNMENT
 # load gene set preparation function
-#source("https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/R/gene_sets_prepare.R")
-# load cell type annotation function
-# load gene set preparation function
 source("https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/R/gene_sets_prepare.R")
 # load cell type annotation function
 source("https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/R/sctype_score_.R")
