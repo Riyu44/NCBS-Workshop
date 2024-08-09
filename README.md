@@ -185,11 +185,11 @@ The ```FindNeighbors``` function in Seurat identifies the nearest neighbors of e
 
 The ```FindClusters``` clusters the cells based on the similarity of expression. ```resolution``` indicates how fine clusters to make. Higher is the resolution, more clusters are made. 
 
-- **Understanding code** - These lines construct a shared nearest neighbor graph (FindNeighbors) using the top 30 PCs and identify clusters within the data (FindClusters) with a resolution parameter set to 0.8. This step groups cells into clusters based on their gene expression profiles, enabling the identification of distinct cell populations.
-
 #### Visualization
 ```r
-clusters_plot<-DimPlot(spatial_data, reduction = "umap")
+clusters_plot <- DimPlot(spatial_data, reduction = "umap")
+clusters_plot
+
 cluster_of_interest <- c(1,2)
 
 # To find markers between specific clusters; Here 1 and 2
