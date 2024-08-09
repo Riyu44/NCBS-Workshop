@@ -128,7 +128,7 @@ spatial_data <- Load10X_Spatial("/Enter/your/folder/location/outs",
 
 ### 4. **Normalize Data**
 ```r
-spatial_data <- NormalizeData(spatial_data, normalization.method = "LogNormalize", scale.factor = 10000)
+spatial_data <- NormalizeData(spatial_data, normalization.method = "RC", scale.factor = 10000)
 spatial_data <- FindVariableFeatures(spatial_data, selection.method = "vst", nfeatures = 2000)
 ```
 
@@ -189,69 +189,6 @@ The ```FindClusters``` clusters the cells based on the similarity of expression.
 ```r
 clusters_plot <- DimPlot(spatial_data, reduction = "umap")
 clusters_plot
-
-cluster_of_interest <- c(1,2)
-
-# To find markers between specific clusters; Here 1 and 2
-selected_markers <- FindMarkers(spatial_data, ident.1 = cluster_of_interest[1], ident.2 = cluster_of_interest[2], only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
-# To filter significant ones among the identified markers
-selected_filtered_genes <- subset(selected_markers, p_val_adj <= 0.05 & abs(avg_log2FC) >=1)
-```
-- **Understanding code** - UMAP (Uniform Manifold Approximation and Projection) is used to reduce the dimensionality of the data and visualize clusters in a 2D space. The DimPlot function generates a plot showing the spatial distribution of these clusters. UMAP helps in visualizing the complex high-dimensional data in a comprehensible manner, highlighting the relationships between different cell clusters.
-
-- Seurat can help you ```FindMarkers``` that define clusters via differential expression (DE). By default, it identifies positive and negative markers of a single cluster (specified in ident.1, ident.2), compared to all other cells. 
-
-#### Marker Gene Identification
-```r
-
-markers <- FindAllMarkers(spatial_data, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
-
-filtered_genes <- subset(markers, p_val_adj <= 0.05 & abs(avg_log2FC) >=1)
-```
-- **Understanding code** - These lines identify marker genes that distinguish between clusters of interest. The ```FindAllMarkers``` function in Seurat is used to identify differentially expressed genes (markers) between clusters. It compares each cluster against all other clusters and returns the top marker genes for each cluster. 
-Further filtering refines the list of significant marker genes based on adjusted p-values and expression changes. Identifying marker genes helps understand the biological characteristics and differences between cell clusters. It finally assigns each cell to a specific cluster, providing a comprehensive overview of the cell population's structure.
-
-- **Sample Output**
-```md
-## Computing nearest neighbor graph
-## Computing SNN
-## Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
-## 
-## Number of nodes: 2719
-## Number of edges: 107772
-## 
-## Running Louvain algorithm...
-## Maximum modularity in 10 random starts: 0.7744
-## Number of communities: 10
-## Elapsed time: 0 seconds
-## 12:00:45 UMAP embedding parameters a = 0.9922 b = 1.112
-## Found more than one class "dist" in cache; using the first, from namespace 'BiocGenerics'
-## Also defined by 'spam'
-## 12:00:45 Read 2719 rows and found 30 numeric columns
-## 12:00:45 Using Annoy for neighbor search, n_neighbors = 30
-## Found more than one class "dist" in cache; using the first, from namespace 'BiocGenerics'
-## Also defined by 'spam'
-## 12:00:45 Building Annoy index with metric = cosine, n_trees = 50
-## 0%   10   20   30   40   50   60   70   80   90   100%
-## [----|----|----|----|----|----|----|----|----|----|
-## **************************************************|
-## 12:00:45 Writing NN index file to temp file /tmp/Rtmp8PwOGO/file905a01aea1d51
-## 12:00:45 Searching Annoy index using 1 thread, search_k = 3000
-## 12:00:45 Annoy recall = 100%
-## 12:00:46 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
-## 12:00:46 Initializing from normalized Laplacian + noise (using RSpectra)
-## 12:00:46 Commencing optimization for 500 epochs, with 118816 positive edges
-## 12:00:49 Optimization finished
-## Calculating cluster 0
-## Calculating cluster 1
-## Calculating cluster 2
-## Calculating cluster 3
-## Calculating cluster 4
-## Calculating cluster 5
-## Calculating cluster 6
-## Calculating cluster 7
-## Calculating cluster 8
-## Calculating cluster 9
 ```
 
 
@@ -390,8 +327,75 @@ p1 + p2
 - **Sample Output**
 ![Plot image](utils/p1_p2.png)
 
+### 9. **Marker Gene Identification**
 
-### 9. **Dot Plot Visualizations**
+```r
+cluster_of_interest <- c(1,2)
+
+# To find markers between specific clusters; Here 1 and 2
+selected_markers <- FindMarkers(spatial_data, ident.1 = cluster_of_interest[1], ident.2 = cluster_of_interest[2], only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+# To filter significant ones among the identified markers
+selected_filtered_genes <- subset(selected_markers, p_val_adj <= 0.05 & abs(avg_log2FC) >=1)
+```
+- **Understanding code** - UMAP (Uniform Manifold Approximation and Projection) is used to reduce the dimensionality of the data and visualize clusters in a 2D space. The DimPlot function generates a plot showing the spatial distribution of these clusters. UMAP helps in visualizing the complex high-dimensional data in a comprehensible manner, highlighting the relationships between different cell clusters.
+
+- Seurat can help you ```FindMarkers``` that define clusters via differential expression (DE). By default, it identifies positive and negative markers of a single cluster (specified in ident.1, ident.2), compared to all other cells. 
+
+
+```r
+
+markers <- FindAllMarkers(spatial_data, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+
+filtered_genes <- subset(markers, p_val_adj <= 0.05 & abs(avg_log2FC) >=1)
+```
+- **Understanding code** - These lines identify marker genes that distinguish between clusters of interest. The ```FindAllMarkers``` function in Seurat is used to identify differentially expressed genes (markers) between clusters. It compares each cluster against all other clusters and returns the top marker genes for each cluster. 
+Further filtering refines the list of significant marker genes based on adjusted p-values and expression changes. Identifying marker genes helps understand the biological characteristics and differences between cell clusters. It finally assigns each cell to a specific cluster, providing a comprehensive overview of the cell population's structure.
+
+- **Sample Output**
+```md
+## Computing nearest neighbor graph
+## Computing SNN
+## Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+## 
+## Number of nodes: 2719
+## Number of edges: 107772
+## 
+## Running Louvain algorithm...
+## Maximum modularity in 10 random starts: 0.7744
+## Number of communities: 10
+## Elapsed time: 0 seconds
+## 12:00:45 UMAP embedding parameters a = 0.9922 b = 1.112
+## Found more than one class "dist" in cache; using the first, from namespace 'BiocGenerics'
+## Also defined by 'spam'
+## 12:00:45 Read 2719 rows and found 30 numeric columns
+## 12:00:45 Using Annoy for neighbor search, n_neighbors = 30
+## Found more than one class "dist" in cache; using the first, from namespace 'BiocGenerics'
+## Also defined by 'spam'
+## 12:00:45 Building Annoy index with metric = cosine, n_trees = 50
+## 0%   10   20   30   40   50   60   70   80   90   100%
+## [----|----|----|----|----|----|----|----|----|----|
+## **************************************************|
+## 12:00:45 Writing NN index file to temp file /tmp/Rtmp8PwOGO/file905a01aea1d51
+## 12:00:45 Searching Annoy index using 1 thread, search_k = 3000
+## 12:00:45 Annoy recall = 100%
+## 12:00:46 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
+## 12:00:46 Initializing from normalized Laplacian + noise (using RSpectra)
+## 12:00:46 Commencing optimization for 500 epochs, with 118816 positive edges
+## 12:00:49 Optimization finished
+## Calculating cluster 0
+## Calculating cluster 1
+## Calculating cluster 2
+## Calculating cluster 3
+## Calculating cluster 4
+## Calculating cluster 5
+## Calculating cluster 6
+## Calculating cluster 7
+## Calculating cluster 8
+## Calculating cluster 9
+```
+
+
+### 10. **Dot Plot Visualizations**
 ```r
 DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6","DNAAF1","MUC4","RARRES2","SCGB1A1","SFTPA2","SFTPB","SFTPC"), dot.scale = 4) #ACC_markers_fromGSEA
 ```
@@ -399,9 +403,10 @@ DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6
 ![Plot image](utils/dot_plot.png)
 
 
-### 10. **Dot Plot - 2**
+### 11. **Dot Plot - 2**
 ```r
 DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6","DNAAF1","MUC4","RARRES2","SCGB1A1","SFTPA2","SFTPB","SFTPC"), dot.scale = 4) #ACC_markers_fromGSEA
 ```
+
 - **Sample Output**
 ![Plot image](utils/dotplot_2.png)
