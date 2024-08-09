@@ -150,8 +150,6 @@ spatial_data <- ScaleData(spatial_data, features = rownames(spatial_data))
 
 spatial_data <- RunPCA(spatial_data, features = VariableFeatures(object = spatial_data))
 
-# View the PCA results
-print(spatial_data[["pca"]])
 ```
 
 * The formula for each gene (i) in each cell (j) is:
