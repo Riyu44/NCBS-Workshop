@@ -249,6 +249,8 @@ The sctype_score function is used to score each cell for the likelihood of belon
 ```r
 # merge by cluster
 cL_resutls = do.call("rbind", lapply(unique(spatial_data@meta.data$seurat_clusters), function(cl){
+  # For every cluster, calculates the cluster scores
+  # to identify the cell type
   es.max.cl = sort(rowSums(es.max[ ,rownames(spatial_data@meta.data[spatial_data@meta.data$seurat_clusters==cl, ])]), decreasing = !0)
   head(data.frame(cluster = cl, type = names(es.max.cl), scores = es.max.cl, ncells = sum(spatial_data@meta.data$seurat_clusters==cl)), 10)
 }))
