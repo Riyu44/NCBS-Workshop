@@ -175,6 +175,9 @@ ElbowPlot(spatial_data)
 spatial_data <- FindNeighbors(spatial_data, dims = 1:8)
 spatial_data <- FindClusters(spatial_data, resolution = 0.8)
 spatial_data <- RunUMAP(spatial_data, dims = 1:8)
+
+# saving a copy of spatial_data in another variable for upcoming analysis
+spatial_data_with_unknown <- spatial_data
 ```
 
 The ```ElbowPlot``` function in Seurat is used to help you decide how many principal components (PCs) to use for further analysis after performing PCA. It creates a plot showing the amount of variance explained by each principal component.
@@ -318,13 +321,20 @@ p1 + p2
 
 ### 9. **Marker Gene Identification**
 
+```{r}
+clusters_plot + p1
+```
+
 ```r
-cluster_of_interest <- c(1,2)
+# 0 -is unknown
+# 6 -is cancer stem cells
+cluster_of_interest <- c(0,6)
 
 # To find markers between specific clusters; Here 1 and 2
-selected_markers <- FindMarkers(spatial_data, ident.1 = cluster_of_interest[1], ident.2 = cluster_of_interest[2], only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+selected_markers <- FindMarkers(spatial_data_with_unknown, ident.1 = cluster_of_interest[1], ident.2 = cluster_of_interest[2], only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
 # To filter significant ones among the identified markers
 selected_filtered_genes <- subset(selected_markers, p_val_adj <= 0.05 & abs(avg_log2FC) >=1)
+selected_filtered_genes
 ```
 - **Understanding code** - UMAP (Uniform Manifold Approximation and Projection) is used to reduce the dimensionality of the data and visualize clusters in a 2D space. The DimPlot function generates a plot showing the spatial distribution of these clusters. UMAP helps in visualizing the complex high-dimensional data in a comprehensible manner, highlighting the relationships between different cell clusters.
 
@@ -332,10 +342,10 @@ selected_filtered_genes <- subset(selected_markers, p_val_adj <= 0.05 & abs(avg_
 
 
 ```r
-
-markers <- FindAllMarkers(spatial_data, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+markers <- FindAllMarkers(spatial_data_with_unknown, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
 
 filtered_genes <- subset(markers, p_val_adj <= 0.05 & abs(avg_log2FC) >=1)
+filtered_genes
 ```
 - **Understanding code** - These lines identify marker genes that distinguish between clusters of interest. The ```FindAllMarkers``` function in Seurat is used to identify differentially expressed genes (markers) between clusters. It compares each cluster against all other clusters and returns the top marker genes for each cluster. 
 Further filtering refines the list of significant marker genes based on adjusted p-values and expression changes. Identifying marker genes helps understand the biological characteristics and differences between cell clusters. It finally assigns each cell to a specific cluster, providing a comprehensive overview of the cell population's structure.
