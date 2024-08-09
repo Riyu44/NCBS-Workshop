@@ -147,7 +147,11 @@ $$
 ### 5. **Scale Data and Run PCA**
 ```r
 spatial_data <- ScaleData(spatial_data, features = rownames(spatial_data))
+
 spatial_data <- RunPCA(spatial_data, features = VariableFeatures(object = spatial_data))
+
+# View the PCA results
+print(spatial_data[["pca"]])
 ```
 
 * The formula for each gene (i) in each cell (j) is:
@@ -156,8 +160,11 @@ $$
 \text{Scaled Expression}_{ij} = \frac{\text{Expression}_ij - \text{Mean Expression}_i}{\text{Standard Deviation}_i}
 $$
 
-- **Output** - This block scales the data and performs PCA. You should see PCA results stored in the spatial_data object.
-- **Understanding the code** - Code ensures that data is subsequently scaled to standardize gene expression levels, making genes comparable by removing biases due to different expression ranges. Finally, Principal Component Analysis (PCA) is performed on these variable features to reduce dimensionality, preserving significant variability and highlighting essential patterns for downstream clustering and visualization. These steps collectively ensure robust, accurate, and insightful analysis of spatial transcriptomics data.
+What ```RunPCA``` Does
+
+1.	*Simplifies Data*: Reduces the number of features (genes) by creating new “summary” features (principal components) that capture the most variation in your data.
+2.	*Prepares for Analysis*: Makes it easier to see patterns in your data, which helps with things like clustering or creating plots.
+
 
 
 ### 6. **Cluster and Filter**
@@ -172,6 +179,10 @@ spatial_data <- FindNeighbors(spatial_data, dims = 1:30)
 spatial_data <- FindClusters(spatial_data, resolution = 0.8)
 spatial_data <- RunUMAP(spatial_data, dims = 1:30)
 ```
+
+The ```ElbowPlot``` function in Seurat is used to help you decide how many principal components (PCs) to use for further analysis after performing PCA. It creates a plot showing the amount of variance explained by each principal component.
+
+
 - **Understanding code** - These lines construct a shared nearest neighbor graph (FindNeighbors) using the top 30 PCs and identify clusters within the data (FindClusters) with a resolution parameter set to 0.8. This step groups cells into clusters based on their gene expression profiles, enabling the identification of distinct cell populations.
 
 #### Visualization
