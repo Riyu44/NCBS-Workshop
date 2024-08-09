@@ -174,9 +174,9 @@ What ```RunPCA``` Does
 ElbowPlot(spatial_data)
 
 # cluster and visualize
-spatial_data <- FindNeighbors(spatial_data, dims = 1:30)
+spatial_data <- FindNeighbors(spatial_data, dims = 1:8)
 spatial_data <- FindClusters(spatial_data, resolution = 0.8)
-spatial_data <- RunUMAP(spatial_data, dims = 1:30)
+spatial_data <- RunUMAP(spatial_data, dims = 1:8)
 ```
 
 The ```ElbowPlot``` function in Seurat is used to help you decide how many principal components (PCs) to use for further analysis after performing PCA. It creates a plot showing the amount of variance explained by each principal component.
