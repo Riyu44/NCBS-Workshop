@@ -208,7 +208,7 @@ markers <- FindAllMarkers(spatial_data, only.pos = TRUE, min.pct = 0.25, logfc.t
 
 filtered_genes <- subset(markers, p_val_adj <= 0.05 & abs(avg_log2FC) >=1)
 ```
-- **Understanding code** - These lines identify marker genes that distinguish between clusters of interest. The ```FindAllMarkers``` function in Seurat is used to identify differentially expressed genes (markers) between clusters in single-cell RNA-seq data. It compares each cluster against all other clusters and returns the top marker genes for each cluster. 
+- **Understanding code** - These lines identify marker genes that distinguish between clusters of interest. The ```FindAllMarkers``` function in Seurat is used to identify differentially expressed genes (markers) between clusters. It compares each cluster against all other clusters and returns the top marker genes for each cluster. 
 Further filtering refines the list of significant marker genes based on adjusted p-values and expression changes. Identifying marker genes helps understand the biological characteristics and differences between cell clusters. It finally assigns each cell to a specific cluster, providing a comprehensive overview of the cell population's structure.
 
 - **Sample Output**
