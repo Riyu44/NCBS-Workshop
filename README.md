@@ -249,10 +249,6 @@ The sctype_score function is used to score each cell for the likelihood of belon
 
 #### Merge Results by CLusters
 ```r
-# NOTE: scRNAseqData parameter should correspond to your input scRNA-seq matrix. 
-# In case Seurat is used, it is either spatial_data[["RNA"]]@scale.data (default), spatial_data[["SCT"]]@scale.data, in case sctransform is used for normalization,
-# or spatial_data[["integrated"]]@scale.data, in case a joint analysis of multiple single-cell datasets is performed.
-
 # merge by cluster
 cL_resutls = do.call("rbind", lapply(unique(spatial_data@meta.data$seurat_clusters), function(cl){
   es.max.cl = sort(rowSums(es.max[ ,rownames(spatial_data@meta.data[spatial_data@meta.data$seurat_clusters==cl, ])]), decreasing = !0)
