@@ -228,13 +228,8 @@ tissue = "Lung" # e.g. Immune system,Pancreas,Liver,Eye,Kidney,Brain,Lung,Adrena
 # prepare gene sets
 gs_list = gene_sets_prepare(db_, tissue)
 
-
 #ASSIGN CELL-TYPES TO CLUSTERS
 # get cell-type by cell matrix
-
-#es.max = sctype_score(scRNAseqData = spatial_data[["RNA"]]@scale.data, scaled = TRUE,gs = gs_list$gs_positive, gs2 = gs_list$gs_negative) 
-
-#es.max = sctype_score(scRNAseqData = spatial_data@assays[["RNA"]]@layers[["scale.data"]] , scaled = TRUE,gs = gs_list$gs_positive, gs2 = gs_list$gs_negative) 
 spatial_data[["RNA3"]] <- as(object = spatial_data[["RNA"]], Class = "Assay")
 
 es.max = sctype_score(scRNAseqData = spatial_data[["RNA3"]]@scale.data,
