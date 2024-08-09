@@ -178,8 +178,10 @@ spatial_data <- RunUMAP(spatial_data, dims = 1:30)
 ```r
 clusters_plot<-DimPlot(spatial_data, reduction = "umap")
 cluster_of_interest <- c(1,2)
-selected_markers <- FindMarkers(spatial_data, ident.1 = cluster_of_interest[1], ident.2 = cluster_of_interest[2], only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
 
+# To find markers between specific clusters; Here 1 and 2
+selected_markers <- FindMarkers(spatial_data, ident.1 = cluster_of_interest[1], ident.2 = cluster_of_interest[2], only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+# To filter significant ones among the identified markers
 selected_filtered_genes <- subset(selected_markers, p_val_adj <= 0.05 & abs(avg_log2FC) >=1)
 ```
 - **Understanding code** - UMAP (Uniform Manifold Approximation and Projection) is used to reduce the dimensionality of the data and visualize clusters in a 2D space. The DimPlot function generates a plot showing the spatial distribution of these clusters. UMAP helps in visualizing the complex high-dimensional data in a comprehensible manner, highlighting the relationships between different cell clusters.
