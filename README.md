@@ -415,13 +415,25 @@ DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6
 
 ### 12. **Annotation Using Pratyaksha**
 - Make sure you have Python (>=2.7) installed on the system
+- Follow the below code segments to install the dependencies and run the software files
+
+- **Installing Dependencies**
 ```bash
 pip install -r requirements.txt
 ```
+
+- **Sample Output**
+![Plot image](utils_1/Pratyaksha1.png)
+
+- **Running Pratyaskha**
 ```
 python main.py
 ```
+- **Sample Output**
+![Plot image](utils_1/Pratyaksha2.png)
 
+- **Pratyaksha Guide**
+![Plot image](utils_1/Pratyaksha3.png)
 
 #### Contact Information:
 https://sites.google.com/view/fungel-iitd/lab-members?authuser=0
