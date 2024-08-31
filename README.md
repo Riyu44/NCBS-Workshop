@@ -433,7 +433,7 @@ python main.py
 ![Plot image](utils_1/Pratyaksha2.png)
 
 - **Pratyaksha Guide**
-![Plot image](utils_1/Pratyaksha 3.png)
+![Plot image](utils_1/Pratyaksha3.png)
 
 #### Contact Information:
 https://sites.google.com/view/fungel-iitd/lab-members?authuser=0
