@@ -2,7 +2,7 @@
 
 The initial steps involve demultiplexing samples using ```spaceranger mkfastq```, followed by generating spatially resolved gene expression profiles with Spaceranger. This process includes aligning reads, counting UMIs, and assigning spatial coordinates to the data
 
-![Plot image](utils/10X_run.png)
+![Plot image](utils_1/10X_run.png)
 
 Reference [link](https://www.10xgenomics.com/support/software/space-ranger/latest/analysis/inputs/fastqs-generating-fastqs)
 
@@ -22,7 +22,7 @@ spaceranger mkfastq --id=tiny-bcl \
 ```
 Example ```samplesheet.csv```:
 
-![Plot image](utils/samplesheet.png)
+![Plot image](utils_1/samplesheet.png)
 
 Running spaceranger mkfastq:
 
@@ -32,9 +32,9 @@ conda activate bcl2fastq_2.20
 ```
 Example BCL file screenshot:
 
-![Plot image](utils/binary_file.png)
+![Plot image](utils_1/binary_file.png)
 
-![Plot image](utils/bcl2fastq.png)
+![Plot image](utils_1/bcl2fastq.png)
 
 
 ### count
@@ -57,7 +57,7 @@ spaceranger count --id="Visium_FFPE_Mouse_Brain" \
 
 ## Summary of the spatial sequencing run
 
-[![summary link](utils/seq_run.png)](https://cf.10xgenomics.com/samples/spatial-exp/2.0.1/CytAssist_11mm_FFPE_Human_Lung_Cancer/CytAssist_11mm_FFPE_Human_Lung_Cancer_web_summary.html)
+[![summary link](utils_1/seq_run.png)](https://cf.10xgenomics.com/samples/spatial-exp/2.0.1/CytAssist_11mm_FFPE_Human_Lung_Cancer/CytAssist_11mm_FFPE_Human_Lung_Cancer_web_summary.html)
 
 ## Setup Instructions
 
@@ -319,7 +319,7 @@ p2 <- SpatialDimPlot(spatial_data, label = TRUE, label.size = 3, cols = ccolss)
 p1 + p2
 ```
 - **Sample Output**
-![Plot image](utils/p1_p2.png)
+![Plot image](utils_1/p1_p2.png)
 
 ### 9. **Marker Gene Identification**
 
@@ -401,7 +401,7 @@ Further filtering refines the list of significant marker genes based on adjusted
 DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6","DNAAF1","MUC4","RARRES2","SCGB1A1","SFTPA2","SFTPB","SFTPC"), dot.scale = 4) #ACC_markers_fromGSEA
 ```
 - **Sample Output**
-![Plot image](utils/dot_plot.png)
+![Plot image](utils_1/dot_plot.png)
 
 
 ### 11. **Dot Plot - 2**
@@ -410,7 +410,7 @@ DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6
 ```
 
 - **Sample Output**
-![Plot image](utils/dotplot_2.png)
+![Plot image](utils_1/dotplot_2.png)
 
 
 #### Contact Information:
