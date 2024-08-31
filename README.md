@@ -413,5 +413,15 @@ DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6
 ![Plot image](utils_1/dotplot_2.png)
 
 
+### 12. **Annotation Using Pratyaksha**
+- Make sure you have Python (>=2.7) installed on the system
+```bash
+pip install -r requirements.txt
+```
+```
+python main.py
+```
+
+
 #### Contact Information:
 https://sites.google.com/view/fungel-iitd/lab-members?authuser=0
