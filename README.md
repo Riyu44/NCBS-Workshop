@@ -435,5 +435,19 @@ python main.py
 - **Pratyaksha Guide**
 ![Plot image](utils_1/Pratyaksha3.png)
 
+### 13. **Annotation Guide for Pratyaksha**
+
+- **Select the image to annotate**
+![Plot image](utils_1/Pratyaksha4.png)
+
+- **Select the tissue_positions.csv file (mapping file)**
+![Plot image](utils_1/Pratyaksha5.png)
+
+- **Input the corresponding scale factor from scale_factors_json.json file**
+![Plot image](utils_1/Pratyaksha6.png)
+
+- **Start Annotation and extract barcodes once done**
+![Plot image](utils_1/Pratyaksha7.png)
+
 #### Contact Information:
 https://sites.google.com/view/fungel-iitd/lab-members?authuser=0
