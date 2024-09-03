@@ -416,6 +416,7 @@ DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6
 ### 12. **Annotation Using Pratyaksha**
 - Make sure you have Python (>=2.7) installed on the system
 - Follow the below code segments to install the dependencies and run the software files
+- Sample Dataset MiST - https://drive.google.com/drive/folders/1nRNCgp-DcNkb1zBIFAael0uAt_iDoH7S?usp=sharing
 
 - **Installing Dependencies**
 ```bash
