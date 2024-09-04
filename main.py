@@ -428,14 +428,22 @@ class QImageViewer(QMainWindow):
     
     #Implementing the mapping_script
     def mapping_script(self, dp):
-        tissue_positions_df = self.tissue_positions_complete
-        tissue_positions_df = tissue_positions_df[tissue_positions_df['in_tissue'] == 1]
-        tree = KDTree(tissue_positions_df[['pxl_col_in_fullres', 'pxl_row_in_fullres']])
-        closest_points_indices = tree.query(dp[['x', 'y']])[1]
-        closest_barcodes = tissue_positions_df.iloc[closest_points_indices]['barcode']
-        unique_barcodes = closest_barcodes.drop_duplicates()
-        unique_barcodes.to_csv('barcodes.csv', index=False)
-        print("Unique barcodes have been saved to barcodes.csv")
+        text, ok = QtWidgets.QInputDialog.getText(
+            self, 'File name', 'Enter the .csv file name for barcodes (eg. barcodes.csv):'
+        )
+        if ok and text:
+            try:
+                tissue_positions_df = self.tissue_positions_complete
+                tissue_positions_df = tissue_positions_df[tissue_positions_df['in_tissue'] == 1]
+                tree = KDTree(tissue_positions_df[['pxl_col_in_fullres', 'pxl_row_in_fullres']])
+                closest_points_indices = tree.query(dp[['x', 'y']])[1]
+                closest_barcodes = tissue_positions_df.iloc[closest_points_indices]['barcode']
+                unique_barcodes = closest_barcodes.drop_duplicates()
+                unique_barcodes.to_csv(text, index=False)
+                print("Unique barcodes have been saved to barcodes.csv")
+            except ValueError:
+                # Handle the case where the conversion fails
+                QtWidgets.QMessageBox.warning(self, 'Input Error', 'Invalid name entered. Please enter a valid name.')
 
     #Implementing the extractData method
     def extractBarcodes(self):

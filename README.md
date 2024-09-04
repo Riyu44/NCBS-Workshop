@@ -412,11 +412,23 @@ DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6
 - **Sample Output**
 ![Plot image](utils_1/dotplot_2.png)
 
+### (*) **Loupe Browser**
+- Link to download loupe browser [link](https://www.10xgenomics.com/support/software/loupe-browser/downloads/eula?closeUrl=%2Fsupport%2Fsoftware%2Floupe-browser&lastTouchOfferName=Loupe%20Browser&lastTouchOfferType=Software%20Download&product=chromium&redirectUrl=%2Fsupport%2Fsoftware%2Floupe-browser%2Fdownloads)
+
+- **Annotation drawbacks of loupe browser**
+![Plot image](utils_1/loupe1.png)
 
 ### 12. **Annotation Using Pratyaksha**
 - Make sure you have Python (>=2.7) installed on the system
 - Follow the below code segments to install the dependencies and run the software files
 - Sample Dataset MiST - https://drive.google.com/drive/folders/1nRNCgp-DcNkb1zBIFAael0uAt_iDoH7S?usp=sharing
+- **hires_image and lowres_image** - These files are downsampled versions of the original, full-resolution image inputs provided by the user. Downsampling is accomplished by box filtering, which averages RGB values in patches of pixels in the full-resolution image to obtain an RGB value of one pixel in the downsampled image. The downsampled images maintain the aspect ratio of the original image. The longest dimension of __tissue_hires_image.png__ is as follows:
+
+Visium v2 slide, 6.5 mm Capture Area -	2,000 pixels
+Visium v2 slide, 11 mm Capture Area -	4,000 pixels
+Visium HD slide, 6.5 mm Capture Area -	6,000 pixels
+
+Irrespective of the slide type, the longest dimension of __tissue_lowres_image.png__ is always 600 pixels.
 
 - **Installing Dependencies**
 ```bash
