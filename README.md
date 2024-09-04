@@ -434,6 +434,7 @@ python main.py
 ![Plot image](utils_1/Pratyaksha2.png)
 
 - **Pratyaksha Guide**
+  
 ![Plot image](utils_1/Pratyaksha3.png)
 
 ### 13. **Annotation Guide for Pratyaksha**
