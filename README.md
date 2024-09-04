@@ -420,7 +420,7 @@ DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6
 - **Working of loupe browser**
 ![Plot image](utils_1/loupe2.png)
 
-- **Annotation drawbacks of loupe browser**
+    - **Annotation drawbacks of loupe browser**
 ![Plot image](utils_1/loupe1.png)
 
 ### 12. **Annotation Using Pratyaksha**
