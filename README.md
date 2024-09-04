@@ -465,7 +465,5 @@ python main.py
 - **Start Annotation and extract barcodes once done**
 ![Plot image](utils_1/Pratyaksha7.png)
 
-Link to download loupe browser [link](https://www.10xgenomics.com/support/software/loupe-browser/downloads/eula?closeUrl=%2Fsupport%2Fsoftware%2Floupe-browser&lastTouchOfferName=Loupe%20Browser&lastTouchOfferType=Software%20Download&product=chromium&redirectUrl=%2Fsupport%2Fsoftware%2Floupe-browser%2Fdownloads)
-
 #### Contact Information:
 https://sites.google.com/view/fungel-iitd/lab-members?authuser=0
