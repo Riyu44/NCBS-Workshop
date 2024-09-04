@@ -417,6 +417,9 @@ DotPlot(spatial_data, features = c("CLDN5","HIGD1B","IQCG","DRC3","DNAI2","FABP6
 ### (*) **Loupe Browser**
 - Link to download loupe browser [link](https://www.10xgenomics.com/support/software/loupe-browser/downloads/eula?closeUrl=%2Fsupport%2Fsoftware%2Floupe-browser&lastTouchOfferName=Loupe%20Browser&lastTouchOfferType=Software%20Download&product=chromium&redirectUrl=%2Fsupport%2Fsoftware%2Floupe-browser%2Fdownloads)
 
+- **Working of loupe browser**
+![Plot image](utils_1/loupe2.png)
+
 - **Annotation drawbacks of loupe browser**
 ![Plot image](utils_1/loupe1.png)
 
