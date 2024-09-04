@@ -55,6 +55,8 @@ spaceranger count --id="Visium_FFPE_Mouse_Brain" \
                  --localmem=128
 ```
 
+link to download 10X Visium probe set [link](https://www.10xgenomics.com/support/cytassist-spatial-gene-expression/documentation/steps/probe-sets/visium-ffpe-probe-sets-files)
+
 ## Summary of the spatial sequencing run
 
 [![summary link](utils_1/seq_run.png)](https://cf.10xgenomics.com/samples/spatial-exp/2.0.1/CytAssist_11mm_FFPE_Human_Lung_Cancer/CytAssist_11mm_FFPE_Human_Lung_Cancer_web_summary.html)
