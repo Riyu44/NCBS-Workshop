@@ -55,6 +55,8 @@ spaceranger count --id="Visium_FFPE_Mouse_Brain" \
                  --localmem=128
 ```
 
+link to download 10X Visium probe set [link](https://www.10xgenomics.com/support/cytassist-spatial-gene-expression/documentation/steps/probe-sets/visium-ffpe-probe-sets-files)
+
 ## Summary of the spatial sequencing run
 
 [![summary link](utils_1/seq_run.png)](https://cf.10xgenomics.com/samples/spatial-exp/2.0.1/CytAssist_11mm_FFPE_Human_Lung_Cancer/CytAssist_11mm_FFPE_Human_Lung_Cancer_web_summary.html)
@@ -462,6 +464,8 @@ python main.py
 
 - **Start Annotation and extract barcodes once done**
 ![Plot image](utils_1/Pratyaksha7.png)
+
+Link to download loupe browser [link](https://www.10xgenomics.com/support/software/loupe-browser/downloads/eula?closeUrl=%2Fsupport%2Fsoftware%2Floupe-browser&lastTouchOfferName=Loupe%20Browser&lastTouchOfferType=Software%20Download&product=chromium&redirectUrl=%2Fsupport%2Fsoftware%2Floupe-browser%2Fdownloads)
 
 #### Contact Information:
 https://sites.google.com/view/fungel-iitd/lab-members?authuser=0
