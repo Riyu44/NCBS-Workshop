@@ -126,6 +126,11 @@ spatial_data <- Load10X_Spatial("/Enter/your/folder/location/outs",
 ```
 - **Output** - This block should load the spatial transcriptomics data. You should see an object named "_spatial_data_" in your R environment
 - **Make sure your working directory PATH and data PATH are correct**
+- Alternatively, if there is an error in loading the .h5 file, you can directly load Seurat object, that is 'spatial_data.rds' file
+
+```r
+spatial_data=read_rds("Path_To_Your_RDS_FIle")
+```  
 
 
 ### 4. **Normalize Data**
