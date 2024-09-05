@@ -469,11 +469,24 @@ python main.py
 ![Plot image](utils_1/Pratyaksha7.png)
 
 ### 11. Find differential gene expression for the manually annotated regions using Pratyaksh
+
 ```r
 
 # Define the barcodes for the new cluster
 new_barcodes <- c("AGTCGGCCACTCTGTT-1","AGTCGGCCGAGGTCTA-1","AGTCGGTTGAATTGTA-1","AGTCTAGCTTGTTACA-1","AGTCTAGGTGTTAACC-1",
                   "AGTCTATTCTGCCGAG-1","AGTCTGAGTTAACCGG-1","AGTGACCTATTAGGAA-1","AGTGAGCCGCCTGCGG-1","AGTGAGTGCGGACACT-1")
+
+# Import the CSV file generated using Pratyaksh into R
+barcodes_data <- read.csv(file_path, header = TRUE, stringsAsFactors = FALSE)
+
+```
+read.csv(): This function reads the CSV file into a data frame
+
+header = TRUE: Indicates that the first row of the CSV file contains the column names.
+
+stringsAsFactors = FALSE: Prevents R from automatically converting string columns into factors, which is often preferred when importing data to avoid unexpected behavior.
+
+```r
 
 # Copy the 'seurat_clusters' column to a new column named 'NewCluster' in the metadata of your seurat object
 spatial_data@meta.data$NewCluster <- spatial_data@meta.data$seurat_clusters
