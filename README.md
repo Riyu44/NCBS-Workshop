@@ -468,7 +468,7 @@ python main.py
 - **Start Annotation and extract barcodes once done**
 ![Plot image](utils_1/Pratyaksha7.png)
 
-### 11. Find differential gene expression for the manually annotated regions using Pratyaksh
+### 14. Find differential gene expression for the manually annotated regions using Pratyaksh
 
 ```r
 
