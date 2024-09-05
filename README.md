@@ -480,11 +480,11 @@ new_barcodes <- c("AGTCGGCCACTCTGTT-1","AGTCGGCCGAGGTCTA-1","AGTCGGTTGAATTGTA-1"
 barcodes_data <- read.csv(file_path, header = TRUE, stringsAsFactors = FALSE)
 
 ```
-read.csv(): This function reads the CSV file into a data frame
+ -read.csv(): This function reads the CSV file into a data frame
 
-header = TRUE: Indicates that the first row of the CSV file contains the column names.
+ -header = TRUE: Indicates that the first row of the CSV file contains the column names.
 
-stringsAsFactors = FALSE: Prevents R from automatically converting string columns into factors, which is often preferred when importing data to avoid unexpected behavior.
+ -stringsAsFactors = FALSE: Prevents R from automatically converting string columns into factors, which is often preferred when importing data to avoid unexpected behavior.
 
 ```r
 
