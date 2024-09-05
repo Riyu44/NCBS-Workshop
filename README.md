@@ -473,10 +473,10 @@ python main.py
 ```r
 
 # Import the CSV file generated using Pratyaksh into R
-barcodes_data <- read.csv(file_path, header = TRUE, stringsAsFactors = FALSE)
+new_barcodes <- read.csv(file_path, header = TRUE, stringsAsFactors = FALSE)
 
 # Alternatively, you can also define the barcodes for the new cluster
-new_barcodes <- c("AGTCGGCCACTCTGTT-1","AGTCGGCCGAGGTCTA-1","AGTCGGTTGAATTGTA-1","AGTCTAGCTTGTTACA-1","AGTCTAGGTGTTAACC-1",
+barcodes_data <- c("AGTCGGCCACTCTGTT-1","AGTCGGCCGAGGTCTA-1","AGTCGGTTGAATTGTA-1","AGTCTAGCTTGTTACA-1","AGTCTAGGTGTTAACC-1",
                   "AGTCTATTCTGCCGAG-1","AGTCTGAGTTAACCGG-1","AGTGACCTATTAGGAA-1","AGTGAGCCGCCTGCGG-1","AGTGAGTGCGGACACT-1")
 
 ```
