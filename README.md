@@ -468,5 +468,38 @@ python main.py
 - **Start Annotation and extract barcodes once done**
 ![Plot image](utils_1/Pratyaksha7.png)
 
+### 11. Find differential gene expression for the manually annotated regions using Pratyaksh
+```r
+
+# Define the barcodes for the new cluster
+new_barcodes <- c("AGTCGGCCACTCTGTT-1","AGTCGGCCGAGGTCTA-1","AGTCGGTTGAATTGTA-1","AGTCTAGCTTGTTACA-1","AGTCTAGGTGTTAACC-1",
+                  "AGTCTATTCTGCCGAG-1","AGTCTGAGTTAACCGG-1","AGTGACCTATTAGGAA-1","AGTGAGCCGCCTGCGG-1","AGTGAGTGCGGACACT-1")
+
+# Copy the 'seurat_clusters' column to a new column named 'NewCluster' in the metadata of your seurat object
+spatial_data@meta.data$NewCluster <- spatial_data@meta.data$seurat_clusters
+
+# Convert 'NewCluster' column to a character vector
+spatial_data@meta.data$NewCluster <- as.character(spatial_data@meta.data$NewCluster)
+
+# Assign "selected" to rows in 'NewCluster' column that match the 'new_barcodes'
+spatial_data@meta.data$NewCluster[rownames(spatial_data@meta.data) %in% new_barcodes] <- "selected"
+
+
+# Verify the new cluster assignment
+table(spatial_data@meta.data$NewCluster)
+
+
+# Step 3: Set the new cluster column as the active identity class
+Idents(spatial_data) <- "NewCluster"
+
+# Step 4: Identify differentially expressed genes between the new cluster and others
+# Compare the new cluster "NewCluster1" against "Other"
+markers <- FindMarkers(spatial_data, ident.1 = "selected", ident.2 = "2")
+
+# Display the top differentially expressed genes
+head(markers)
+
+```
+
 #### Contact Information:
 https://sites.google.com/view/fungel-iitd/lab-members?authuser=0
