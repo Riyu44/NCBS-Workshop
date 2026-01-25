@@ -1,4 +1,4 @@
-# NCBS Statistical Genomics Workshop - Spatial Data Analysis
+# ICGEB Workshop - Spatial Data Analysis
 
 The initial steps involve demultiplexing samples using ```spaceranger mkfastq```, followed by generating spatially resolved gene expression profiles with Spaceranger. This process includes aligning reads, counting UMIs, and assigning spatial coordinates to the data
 
